@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import SignIn from "./pages/SignIn";
 
 function App() {
   return (
-    <>
-      <div className="text-4xl">Hello World</div>
-    </>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
