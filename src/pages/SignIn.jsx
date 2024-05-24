@@ -3,6 +3,8 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaDiscord } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
 
 // import img1 from "../images/Ellipse.jpg";
 
@@ -34,11 +36,19 @@ function SignIn() {
       <div className="bg-[#F8FAFF] p-10">
         <div className="flex flex-col justify-center items-center">
           <p className="text-[36px] font-bold  md:pt-28">Sign In</p>
+
           <p className="text-[16px]">Sign in to your account</p>
 
           <div className="pt-7 text-xs flex  gap-8 ">
-            <p className="bg-white p-2 rounded-xl">Sign in With Google</p>
-            <p className="bg-white p-2 rounded-xl">Sign in With Apple</p>
+            <div className="flex bg-white justify-center items-center">
+              <FcGoogle className="ml-2" size={20} />
+              <p className=" p-2 rounded-xl">Sign in With Google</p>
+            </div>
+
+            <div className=" flex bg-white justify-center items-center">
+              <FaApple className="ml-2 text-gray-400" size={20} />
+              <p className="bg-white p-2 rounded-xl">Sign in With Apple</p>
+            </div>
           </div>
         </div>
 
