@@ -34,10 +34,12 @@ function SignIn() {
 
       {/* div2 */}
       <div className="bg-[#F8FAFF] p-10">
-        <div className="flex flex-col justify-center items-center">
-          <p className="text-[36px] font-bold  md:pt-28">Sign In</p>
+        <div className="flex flex-col md:ml-40">
+          <div className="text-left">
+            <p className="text-[36px] font-bold  md:pt-28">Sign In</p>
 
-          <p className="text-[16px]">Sign in to your account</p>
+            <p className="text-[16px]">Sign in to your account</p>
+          </div>
 
           <div className="pt-7 text-xs flex  gap-8 ">
             <div className="flex bg-white justify-center items-center">
@@ -72,6 +74,10 @@ function SignIn() {
               Sign in
             </button>
           </div>
+          <p className="text-center pt-2">
+            Don’t have an account?{" "}
+            <span className="text-[#346BD4]">Register here</span>
+          </p>
         </div>
       </div>
     </div>
