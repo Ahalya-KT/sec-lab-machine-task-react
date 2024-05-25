@@ -5,12 +5,31 @@ import { FaTwitter } from "react-icons/fa";
 import { FaDiscord } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 // import img1 from "../images/Ellipse.jpg";
 
 function SignIn() {
+  const navigate = useNavigate();
+
+  const SignInSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required(" Email is Required"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/\d/, "Password must contain at least one number")
+      .matches(
+        /[@$!%*?&]/,
+        "Password must contain at least one special character (@, $, !, %, *, ?, &)"
+      ),
+  });
+
   return (
-    <div className="  grid grid-cols-1 md:grid-cols-2 md:h-screen">
+    <div className="  grid grid-cols-1 md:grid-cols-2 md:h-screen relative">
       {/* div1 */}
 
       <div className="bg-[#605BFF] hidden md:block">
@@ -53,32 +72,61 @@ function SignIn() {
             </div>
           </div>
         </div>
+        <Formik
+          initialValues={{
+            password: "",
+            email: "",
+          }}
+          validationSchema={SignInSchema}
+          onSubmit={(values) => {
+            navigate("/dashboard/upload");
+            console.log(values);
+          }}
+        >
+          <Form>
+            <div>
+              <div className="mt-9 flex flex-col md:pt-9 bg-white  md:w-96 md:justify-center items-center mx-auto rounded-xl">
+                <div className="flex flex-col mt-6 ">
+                  <label>Email address</label>
+                  <Field
+                    className=" rounded  w-72 p-1 mt-3 bg-[#F5F5F5]"
+                    name="email"
+                    id="email"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    className="text-red-500 text-sm"
+                    component="p"
+                  />
+                </div>
 
-        <div>
-          <div className="mt-9 flex flex-col md:pt-9 bg-white  md:w-96 md:justify-center items-center mx-auto rounded-xl">
-            <div className="flex flex-col mt-6 ">
-              <label>Email address</label>
-              <input className=" rounded  w-72 p-1 mt-3 bg-[#F5F5F5]" />
+                <div className="flex flex-col pt-5">
+                  <label>Password</label>
+                  <Field
+                    className=" rounded  w-72 p-1 mt-3  bg-[#F5F5F5]"
+                    type="password"
+                    id="password"
+                    name="password"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    className="text-red-500 text-sm"
+                    component="p"
+                  />
+                </div>
+                <p className="text-sm mr-40 text-[#346BD4]">Forgot Password?</p>
+
+                <button className="font-bold mt-9 p-2 rounded-xl text-white w-80 bg-[#605BFF]">
+                  Sign in
+                </button>
+              </div>
+              <p className="text-center pt-2">
+                Don’t have an account?{" "}
+                <span className="text-[#346BD4]">Register here</span>
+              </p>
             </div>
-
-            <div className="flex flex-col pt-5">
-              <label>Password</label>
-              <input
-                className=" rounded  w-72 p-1 mt-3  bg-[#F5F5F5]"
-                type="password"
-              />
-            </div>
-            <p className="text-sm mr-40 text-[#346BD4]">Forgot Password?</p>
-
-            <button className="font-bold mt-9 p-2 rounded-xl text-white w-80 bg-[#605BFF]">
-              Sign in
-            </button>
-          </div>
-          <p className="text-center pt-2">
-            Don’t have an account?{" "}
-            <span className="text-[#346BD4]">Register here</span>
-          </p>
-        </div>
+          </Form>
+        </Formik>
       </div>
     </div>
   );

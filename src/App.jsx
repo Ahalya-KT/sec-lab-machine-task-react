@@ -1,15 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
 import SignIn from "./pages/SignIn";
-import Navbar from "./pages/Navbar";
+import Upload from "./pages/Upload";
+import Dashboard from "./pages/Dashboard";
+import { LuAlignVerticalDistributeStart } from "react-icons/lu";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="upload" element={<Upload />} />
+          </Route>
           <Route path="/" element={<SignIn />} />
-          <Route path="/navbar" element={<Navbar />} />
         </Routes>
       </BrowserRouter>
     </div>
