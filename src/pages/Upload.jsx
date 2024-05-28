@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import img21 from "../images/xl.png";
 import { MdOutlineFileUpload } from "react-icons/md";
+import TableRow from "./TableRow";
 
 function Upload() {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -90,9 +91,8 @@ function Upload() {
           </button>
         )}
       </div>
-
-      <div className="flex flex-col items-center justify-center bg-gray-100 w-full m-8">
-        <table className="w-full bg-white p-4">
+      <div className=" w-full bg-gray-100 m-10 p-6 rounded-xl ">
+        <table className="w-full pt-6">
           <thead>
             <tr>
               <th className="py-2 px-4 bg-gray-100 text-left text-sm font-semibold text-gray-600">
@@ -112,29 +112,13 @@ function Upload() {
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-white p-5">
             {selectedFiles.map((file, index) => (
-              <React.Fragment key={index}>
-                <tr className="h-2"></tr>
-                <tr className=" bg-white-50">
-                  <td className="py-2 px-4">{index + 1}</td>
-                  <td className="py-2 px-4">{file.name}</td>
-                  <td className="py-2 px-4">Prefix Example</td>
-                  <td className="py-2 px-4">
-                    <select className="p-1">
-                      <option value="Active">Tag1</option>
-                      <option value="Inactive">Tag2</option>
-                      <option value="Pending">Tag3</option>
-                    </select>
-                  </td>
-                  <td className="py-2 px-4">tags</td>
-                </tr>
-                <tr className="h-2"></tr>
-              </React.Fragment>
+              <TableRow file={file} key={index} index={index} />
             ))}
           </tbody>
         </table>
-      </div>
+      </div>{" "}
     </div>
   );
 }
