@@ -8,8 +8,7 @@ import { FaApple } from "react-icons/fa";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-
-// import img1 from "../images/Ellipse.jpg";
+import img from "../images/Base Icon.png";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -32,7 +31,11 @@ function SignIn() {
     <div className="  grid grid-cols-1 md:grid-cols-2 md:h-screen relative">
       {/* div1 */}
 
+      {/* for large screen */}
       <div className="bg-[#605BFF] hidden md:block">
+        <div className="py-6 px-6">
+          <img src={img} width={50} />
+        </div>
         {/* <img src={img1} /> */}
 
         <div className="flex flex-col items-center justify-center w-full h-[90vh]">
